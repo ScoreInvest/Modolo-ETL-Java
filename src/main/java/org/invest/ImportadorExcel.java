@@ -42,8 +42,10 @@ public class ImportadorExcel {
                 );
             }
 
-            LocalDate data = LocalDate.parse(
-                    linha.get(0).toString().trim()
+            String dataTexto = linha.get(0).toString().trim();
+
+            LocalDate dataDoAtivo = LocalDate.parse(
+                    dataTexto.substring(0, 10)
             );
 
             String ticker = linha.get(1).toString().trim();
@@ -56,7 +58,7 @@ public class ImportadorExcel {
 
             jdbcTemplate.update(
                     sql,
-                    Date.valueOf(data),
+                    Date.valueOf(dataDoAtivo),
                     ticker,
                     abertura,
                     fechamento,
@@ -66,7 +68,7 @@ public class ImportadorExcel {
             );
 
             System.out.println(
-                    "Cotação importada: " + ticker + " - " + data
+                    "Cotação importada: " + ticker + " - " + dataDoAtivo
             );
         }
 
