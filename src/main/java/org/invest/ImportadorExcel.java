@@ -46,8 +46,10 @@ public class ImportadorExcel {
                     );
                 }
 
-                LocalDate data = LocalDate.parse(linha.get(0).toString().trim());
-                String ticker = linha.get(1).toString().trim();
+               String dataTexto = linha.get(0).toString().trim();
+               LocalDate data = LocalDate.parse(dataTexto.substring(0, 10));
+              
+               String ticker = linha.get(1).toString().trim();
 
                 BigDecimal abertura = decimal(linha.get(2));
                 BigDecimal fechamento = decimal(linha.get(3));
