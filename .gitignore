@@ -37,3 +37,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+# Arquivo de log gerado a cada execução
+log_banco.txt
