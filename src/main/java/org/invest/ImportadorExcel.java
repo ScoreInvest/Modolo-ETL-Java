@@ -1,6 +1,7 @@
 
 package org.invest;
 
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.math.BigDecimal;
@@ -60,6 +61,11 @@ public class ImportadorExcel {
                 inseridos++;
                 Log.registrar("INSERT", "cotacoes",
                         "ticker=" + ticker + ", data=" + data);
+
+            } catch (DuplicateKeyException e) {
+                erros++;
+                Log.registrar("ERRO", "cotacoes",
+                        "Linha " + (i + 1) + ": cotação já cadastrada (data + ticker repetidos)");
 
             } catch (Exception e) {
                 erros++;

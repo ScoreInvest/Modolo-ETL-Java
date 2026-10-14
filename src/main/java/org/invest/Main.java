@@ -10,6 +10,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        // Não deixa o LOG4j2 mostrar a mensagem interna no console.
+        System.setProperty("log4j2.statusLoggerLevel", "OFF");
+
         String caminho = "cotacoes.xlsx";
         Log.registrar("INICIO", "-", "Sistema iniciado");
 
